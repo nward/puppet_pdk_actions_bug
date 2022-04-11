@@ -4,5 +4,11 @@
 #
 # @example
 #   include actions_test
-class actions_test {
+class actions_test (
+  Boolean $data,
+) {
+  if $data {
+    notify { 'foo':
+    }
+  }
 }
