@@ -9,7 +9,11 @@ describe 'actions_test' do
 
       it { is_expected.to compile }
 
-      it { is_expected.to contain_notify('foo') }
+      if os_facts[:osfamily] == 'RedHat'
+        it { is_expected.not_to contain_notify('foo') }
+      else
+        it { is_expected.to contain_notify('foo') }
+      end
     end
   end
 end
